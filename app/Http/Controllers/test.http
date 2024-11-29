@@ -1,0 +1,10 @@
+###
+
+POST http://localhost:8000/api/search
+accept: application/json
+content-type: application/json
+
+{
+  "option": "1",
+  "data": 8102024
+}
