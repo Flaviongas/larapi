@@ -3,7 +3,7 @@ FROM php:8.2-apache
 
 # Instalar dependencias del sistema
 RUN apt-get update && apt-get install -y \
-    libzip-dev zip unzip curl git libpng-dev libonig-dev libxml2-dev \
+    libzip-dev zip unzip curl git libpng-dev libonig-dev libxml2-dev php8.2-mongodb \
     && docker-php-ext-install pdo_mysql mbstring zip exif pcntl bcmath gd
 
 # Habilitar mod_rewrite para Apache
