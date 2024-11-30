@@ -8,7 +8,7 @@ RUN apt-get update && apt-get install -y \
 
 RUN apt-get install  -y openssl libssl-dev libcurl4-openssl-dev
 RUN pecl install mongodb
-RUN docker-php-ext-enable /usr/local/lib/php/extensions/no-debug-non-zts-20180731/mongodb.so
+RUN docker-php-ext-enable mongodb.so
 # Habilitar mod_rewrite para Apache
 RUN a2enmod rewrite
 # Instalar Composer
