@@ -3,12 +3,14 @@ FROM php:8.2-apache
 
 # Instalar dependencias del sistema
 RUN apt-get update && apt-get install -y \
-    libzip-dev zip unzip curl git libpng-dev libonig-dev libxml2-dev  php8.2-pear php-dev \
+    libzip-dev zip unzip curl git libpng-dev libonig-dev libxml2-dev  \
     && docker-php-ext-install pdo_mysql mbstring zip exif pcntl bcmath gd
 
+RUN apt-get install  -y openssl libssl-dev libcurl4-openssl-dev
+RUN pecl install mongodb
+RUN docker-php-ext-enable /usr/local/lib/php/extensions/no-debug-non-zts-20180731/mongodb.so
 # Habilitar mod_rewrite para Apache
 RUN a2enmod rewrite
-RUN yes '' | sudo pecl install mongodb
 # Instalar Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
